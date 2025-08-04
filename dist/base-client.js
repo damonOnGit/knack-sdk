@@ -8,13 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import axios from 'axios';
-import dotenv from 'dotenv';
-dotenv.config();
-const API_BASE_URL = process.env.API_BASE_URL || 'https://api.example.com';
 export class ApiClient {
     constructor(config) {
         this.axiosInstance = axios.create({
-            baseURL: config.baseURL || API_BASE_URL,
+            baseURL: config.apiBaseUrl,
             headers: {
                 'Content-Type': 'application/json',
             },

@@ -5,7 +5,7 @@ import { ApiClient, type ApiClientConfig } from './base-client.js';
 export interface KnackApiClientConfig extends ApiClientConfig {
     applicationId: string;
     apiKey: string;
-    baseURL?: string;
+    apiBaseUrl?: string;
 }
 /**
  * Represents the configuration for the KnackViewClient.
@@ -13,7 +13,7 @@ export interface KnackApiClientConfig extends ApiClientConfig {
 export interface KnackViewClientConfig {
     applicationId: string;
     token: string;
-    baseURL?: string;
+    apiBaseUrl?: string;
 }
 /**
  * Represents the options for sorting records.

@@ -17,7 +17,7 @@ export class KnackApiClient extends ApiClient {
      * @param config The configuration for the KnackApiClient.
      */
     constructor(config) {
-        super(Object.assign(Object.assign({}, config), { baseURL: config.baseURL || 'https://api.knack.com/v1' }));
+        super(Object.assign(Object.assign({}, config), { apiBaseUrl: config.apiBaseUrl || 'https://api.knack.com/v1' }));
         // Add Knack-specific headers
         this.axiosInstance.defaults.headers['X-Knack-Application-Id'] = config.applicationId;
         this.axiosInstance.defaults.headers['X-Knack-REST-API-Key'] = config.apiKey;
@@ -92,7 +92,7 @@ export class KnackViewClient extends ApiClient {
      * @param config The configuration for the KnackViewClient.
      */
     constructor(config) {
-        super(Object.assign(Object.assign({}, config), { apiKey: '', baseURL: config.baseURL || 'https://api.knack.com/v1' }));
+        super(Object.assign(Object.assign({}, config), { apiKey: '', apiBaseUrl: config.apiBaseUrl || 'https://api.knack.com/v1' }));
         // Add Knack-specific headers for view-based requests
         this.axiosInstance.defaults.headers['X-Knack-Application-Id'] = config.applicationId;
         this.axiosInstance.defaults.headers['Authorization'] = config.token;

@@ -1,6 +1,6 @@
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 export interface ApiClientConfig {
-    baseURL?: string;
+    apiBaseUrl?: string;
     apiKey: string;
 }
 export declare class ApiClient {

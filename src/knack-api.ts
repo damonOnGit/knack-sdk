@@ -6,7 +6,7 @@ import { ApiClient, type ApiClientConfig } from './base-client.js';
 export interface KnackApiClientConfig extends ApiClientConfig {
   applicationId: string;
   apiKey: string;
-  baseURL?: string;
+  apiBaseUrl?: string;
 }
 
 /**
@@ -15,7 +15,7 @@ export interface KnackApiClientConfig extends ApiClientConfig {
 export interface KnackViewClientConfig {
   applicationId: string;
   token: string;
-  baseURL?: string;
+  apiBaseUrl?: string;
 }
 
 /**
@@ -62,7 +62,7 @@ export class KnackApiClient extends ApiClient {
   constructor(config: KnackApiClientConfig) {
     super({
       ...config,
-      baseURL: config.baseURL || 'https://api.knack.com/v1',
+      apiBaseUrl: config.apiBaseUrl || 'https://api.knack.com/v1',
     });
 
     // Add Knack-specific headers
@@ -141,7 +141,7 @@ export class KnackViewClient extends ApiClient {
     super({
       ...config,
       apiKey: '', // Not used for view-based requests
-      baseURL: config.baseURL || 'https://api.knack.com/v1',
+      apiBaseUrl: config.apiBaseUrl || 'https://api.knack.com/v1',
     });
 
     // Add Knack-specific headers for view-based requests

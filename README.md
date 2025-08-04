@@ -72,7 +72,7 @@ main();
 
 - `apiKey: string`
 - `applicationId: string`
-- `baseURL?: string`
+- `apiBaseUrl?: string`
 
 ## `KnackViewClient` (for Client-Side Use)
 
@@ -138,4 +138,4 @@ main();
 
 - `token: string`
 - `applicationId: string`
-- `baseURL?: string`
+- `apiBaseUrl?: string`
