@@ -51,6 +51,12 @@ export interface FilterOptions {
   rules: FilterRule[];
 }
 
+export interface Options {
+  pagination?: PaginationOptions;
+  filters?: FilterOptions;
+  sorting?: SortOptions;
+}
+
 /**
  * A client for interacting with the Knack API using object-based requests.
  */
