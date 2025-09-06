@@ -54,10 +54,14 @@ describe('KnackApiClient', () => {
       const expectedUrl = `/objects/${objectKey}/records`;
       const mockData = { records: [] };
       const options = {
-        sort_field: 'field_1',
-        sort_order: 'asc' as const,
-        rows_per_page: 10,
-        page: 1,
+        sorting: {
+          sort_field: 'field_1',
+          sort_order: 'asc' as const,
+        },
+        pagination: {
+          rows_per_page: 10,
+          page: 1,
+        },
         filters: {
           match: 'and' as const,
           rules: [{ field: 'field_1', operator: 'is', value: 'test' }],
@@ -192,10 +196,14 @@ describe('KnackViewClient', () => {
       const expectedUrl = `/pages/${sceneKey}/views/${viewKey}/records`;
       const mockData = { records: [] };
       const options = {
-        sort_field: 'field_1',
-        sort_order: 'asc' as const,
-        rows_per_page: 10,
-        page: 1,
+        sorting: {
+          sort_field: 'field_1',
+          sort_order: 'asc' as const,
+        },
+        pagination: {
+          rows_per_page: 10,
+          page: 1,
+        },
         filters: {
           match: 'and' as const,
           rules: [{ field: 'field_1', operator: 'is', value: 'test' }],

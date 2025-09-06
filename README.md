@@ -37,10 +37,14 @@ async function main() {
 
     // Get records with sorting, pagination, and filtering
     const options = {
-      sort_field: 'field_1',
-      sort_order: 'asc' as const,
-      rows_per_page: 10,
-      page: 1,
+      sorting: {
+        sort_field: 'field_1',
+        sort_order: 'asc' as const,
+      },
+      pagination: {
+        rows_per_page: 10,
+        page: 1,
+      },
       filters: {
         match: 'and' as const,
         rules: [{ field: 'field_1', operator: 'is', value: 'test' }],
@@ -62,7 +66,7 @@ main();
 #### `KnackApiClient`
 
 - `constructor(config: KnackApiClientConfig)`
-- `getRecords<T>(objectKey: string, options?: SortOptions & PaginationOptions & { filters?: FilterOptions }): Promise<T>`
+- `getRecords<T>(objectKey: string, options?: Options): Promise<T>`
 - `getRecord<T>(objectKey: string, recordId: string): Promise<T>`
 - `createRecord<T>(objectKey: string, record: any): Promise<T>`
 - `updateRecord<T>(objectKey: string, recordId: string, record: any): Promise<T>`
@@ -103,10 +107,14 @@ async function main() {
 
     // Get records from a view with sorting, pagination, and filtering
     const options = {
-      sort_field: 'field_1',
-      sort_order: 'asc' as const,
-      rows_per_page: 10,
-      page: 1,
+      sorting: {
+        sort_field: 'field_1',
+        sort_order: 'asc' as const,
+      },
+      pagination: {
+        rows_per_page: 10,
+        page: 1,
+      },
       filters: {
         match: 'and' as const,
         rules: [{ field: 'field_1', operator: 'is', value: 'test' }],
@@ -128,7 +136,7 @@ main();
 #### `KnackViewClient`
 
 - `constructor(config: KnackViewClientConfig)`
-- `getRecords<T>(sceneKey: string, viewKey: string, options?: SortOptions & PaginationOptions & { filters?: FilterOptions }): Promise<T>`
+- `getRecords<T>(sceneKey: string, viewKey: string, options?: Options): Promise<T>`
 - `getRecord<T>(sceneKey: string, viewKey: string, recordId: string): Promise<T>`
 - `createRecord<T>(sceneKey: string, viewKey: string, record: any): Promise<T>`
 - `updateRecord<T>(sceneKey: string, viewKey: string, recordId: string, record: any): Promise<T>`
@@ -139,3 +147,36 @@ main();
 - `token: string`
 - `applicationId: string`
 - `apiBaseUrl?: string`
+
+### Query Options
+
+The optional `options` parameter can be used to enhance queries and enable pagination. They are constrained with the following types.
+
+```typescript
+export interface SortOptions {
+  sort_field: string;
+  sort_order: 'asc' | 'desc';
+}
+
+export interface PaginationOptions {
+  rows_per_page: number;
+  page: number;
+}
+
+export interface FilterRule {
+  field: string;
+  operator: string;
+  value: any;
+}
+
+export interface FilterOptions {
+  match: 'and' | 'or';
+  rules: FilterRule[];
+}
+
+export interface Options {
+  pagination?: PaginationOptions;
+  filters?: FilterOptions;
+  sorting?: SortOptions;
+}
+```

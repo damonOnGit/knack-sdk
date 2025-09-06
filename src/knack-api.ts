@@ -84,7 +84,7 @@ export class KnackApiClient extends ApiClient {
    */
   public async getRecords<T>(
     objectKey: string,
-    options?: SortOptions & PaginationOptions & { filters?: FilterOptions }
+    options?: Options
   ): Promise<T> {
     const params = { ...options };
     if (params.filters) {
@@ -165,7 +165,7 @@ export class KnackViewClient extends ApiClient {
   public async getRecords<T>(
     sceneKey: string,
     viewKey: string,
-    options?: SortOptions & PaginationOptions & { filters?: FilterOptions }
+    options?: Options
   ): Promise<T> {
     const params = { ...options };
     if (params.filters) {
